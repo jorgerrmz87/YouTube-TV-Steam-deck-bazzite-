@@ -3,7 +3,7 @@ set -e
 
 echo "Installing YouTube TV (Leanback) for Linux..."
 
-APP_NAME="YouTube TV"
+APP_NAME="YouTube TV 4k"
 SCRIPT_PATH="$HOME/.local/bin/yttv.sh"
 DESKTOP_PATH="$HOME/.local/share/applications/youtube-tv.desktop"
 
