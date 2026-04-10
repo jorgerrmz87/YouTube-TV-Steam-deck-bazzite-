@@ -1,9 +1,10 @@
+
 #!/usr/bin/env bash
 set -e
 
 echo "Installing YouTube TV (Leanback) for Linux..."
 
-APP_NAME="YouTube TV 4k"
+APP_NAME="YouTube TV 4K"
 SCRIPT_PATH="$HOME/.local/bin/yttv.sh"
 DESKTOP_PATH="$HOME/.local/share/applications/youtube-tv.desktop"
 
@@ -13,14 +14,16 @@ cat > "$SCRIPT_PATH" << 'EOF'
 #!/usr/bin/env bash
 
 URL="https://www.youtube.com/tv"
-UA="Mozilla/5.0 (PlayStation 4 3.11) AppleWebKit/537.73"
+UA="Mozilla/5.0 (PlayStation 5 3.0) AppleWebKit/537.73"
 
-brave-browser \
+flatpak run com.google.Chrome \
   --kiosk "$URL" \
-  --user-agent="$UA" \
   --start-fullscreen \
+  --enable-features=UseOzonePlatform \
+  --ozone-platform=wayland \
   --enable-gpu-rasterization \
-  --ignore-gpu-blocklist
+  --ignore-gpu-blocklist \
+  --user-agent="$UA"
 EOF
 
 chmod +x "$SCRIPT_PATH"
@@ -35,6 +38,7 @@ Type=Application
 Icon=im-youtube
 Categories=Network;
 StartupNotify=false
+Terminal=false
 EOF
 
 echo
